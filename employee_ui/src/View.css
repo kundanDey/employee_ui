@@ -1,0 +1,8 @@
+.Row_all,.Row_td {
+  border:1px solid black;
+  border-collapse: collapse;
+  padding: 2px;
+}
+.Row_td{
+   background-color:lightblue;
+}

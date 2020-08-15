@@ -1,0 +1,16 @@
+table{
+  width:100%;
+  text-align: center;
+}
+h1, p {
+  font-family: Lato;
+}
+button{
+  padding: 10px;
+  border-radius: 10px;
+  border-color: green;
+  background-color: lightgreen
+}
+span{
+  padding: 10px;
+}

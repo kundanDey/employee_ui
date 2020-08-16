@@ -14,11 +14,9 @@ class Home extends Component{
   }
 
   render(){
-
-    var viewHolder=[<Grid/>,<span/>,
+    var viewHolder=[<Grid parent={this}/>,<span/>,
     <center>
     <button onClick={()=>{this.setState({window:"add"});}}>Add</button><span/>
-    <button onClick={()=>{this.setState({window:"edit"});}}>Edit</button><span/>
     <button>Delete</button>
     </center>
     ];
@@ -27,10 +25,9 @@ class Home extends Component{
       viewHolder=[<Add parent={this}/>];
     }
     if(this.state.window=="edit"){
-      viewHolder=[<Edit parent={this}/>];
+      viewHolder=[<Add parent={this}/>];
     }
-    return viewHolder;
-      
+    return viewHolder;   
   }
 }
 

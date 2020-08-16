@@ -2,6 +2,7 @@
   border:1px solid black;
   border-collapse: collapse;
   padding: 2px;
+  cursor: pointer;
 }
 .Row_td{
    background-color:lightblue;

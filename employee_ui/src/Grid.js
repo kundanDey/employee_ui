@@ -13,7 +13,7 @@ class Grid extends Component{
   }
 
   render(){
-    var parent= this.state.store.map( emp =><Rows data={emp} />);
+    var parent= this.state.store.map( emp =><Rows parent={this.props.parent} data={emp} />);
     return (
       <table className="Row_all">
       <thead>

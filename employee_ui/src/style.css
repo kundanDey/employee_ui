@@ -14,3 +14,12 @@ button{
 span{
   padding: 10px;
 }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.Row_all:hover .dropdown-content {display: block;}

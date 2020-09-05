@@ -14,27 +14,39 @@ function add(props){
     name:elements[1].value,
     email:elements[2].value,
     department:elements[3].value,
-    child:[]
+    child:elements[4].value
   };
-  if(elements[4].value!==null&&elements[4].value!==""){
-    var list=elements[4].value.split(",");
-    for(var child in list){
-      for(var key in store){
-        console.log(store[key].empid+" "+parseInt(child));
-        if(store[key].empid==parseInt(list[child])){
-          params.child.push(store[key]);
-          delete(store[key]);
-        }
-      }
-  }
-  }
-  if(params.empid!=null&&params.empid!="")
-  store.push(params);
-   props.parent.setState({
-    window:'view'
-  });
- 
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      store=JSON.parse(xhttp.responseText);
+      props.parent.setState({
+        window:'view'
+      });
+    }
+  };
+  console.log(params);
+  xhttp.open("POST", "http://localhost:8080/addEmployee", true);
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.send(JSON.stringify(params)); 
 }
+
+
+function Delete(props){
+  var elements =document.getElementById("add-form").elements;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      props.parent.setState({
+        window:'view'
+      });
+    }
+  };
+  xhttp.open("POST", "http://localhost:8080/deleteEmployee", true);
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhttp.send(elements[0].value); 
+}
+
 function Add(props){
   console.log(props);
   if(props.parent.state.window=="edit"){
@@ -45,7 +57,8 @@ function Add(props){
   <tr><td>Department :  </td><input type="text"  name="department" value={props.parent.state.data.department}/></tr>
   </table></form>,
   <center>
-  <button onClick={()=>{add(props)}}>Add</button><span/>
+  <button onClick={()=>{add(props)}}>EDIT</button><span/>
+  <button onClick={()=>{Delete(props)}}>Delete</button><span/>
   <button onClick={()=>{cancel(props)}}>Cancel</button>
   </center>];
   }

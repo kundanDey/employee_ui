@@ -16,8 +16,7 @@ class Home extends Component{
   render(){
     var viewHolder=[<Grid parent={this}/>,<span/>,
     <center>
-    <button onClick={()=>{this.setState({window:"add"});}}>Add</button><span/>
-    <button>Delete</button>
+    <button onClick={()=>{this.setState({window:"add"});}}>Add</button>
     </center>
     ];
     console.log(this.state.window);

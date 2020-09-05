@@ -26,11 +26,16 @@ class Rows extends Component{
     const style={
       backgroundColor: 'lightgreen'
     }
-    var child=this.props.data.child.map( emp =><Rows 
-    className={style} data={emp} parent={this.props.parent}/>);
+    var reportees=[];
+    if(this.props.data.reportees){
+      reportees=this.props.data.reportees.map( emp =><Rows 
+        className={style} data={emp} parent={this.props.parent}/>);
+      }
+      
     if(!this.state.withchild){
-      child=[];
+      reportees=[];
     }
+    console.log(reportees);
     return [
       <tr className="Row_all" onDoubleClick={()=>{this.renderEditMenu(this.props);}}  onClick={()=>{this.renderChildren();}}>
         <td className="Row_td" style={this.props.className}>{this.props.data.empid}</td>
@@ -38,7 +43,7 @@ class Rows extends Component{
         <td className="Row_td" style={this.props.className}>{this.props.data.email}</td>
         <td className="Row_td" style={this.props.className}>{this.props.data.department}</td>
       </tr>   
-      ,child];
+      ,reportees];
   }
 }
 
